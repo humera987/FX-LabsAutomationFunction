@@ -10,7 +10,7 @@ init:
 
 endpoint: /accounts/{{@CreateGitHubaccount_Response.data.id}}
 
-method: POST
+method: GET
 
 auth: Default
 
