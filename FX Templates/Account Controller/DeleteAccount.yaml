@@ -4,7 +4,7 @@ authors:
   - Asiya Shaji
   - Humera Sultana
 
-type: SUITE
+type: ABSTRACT
 
 endpoint: /accounts/{{@Response.data.id}}
 
