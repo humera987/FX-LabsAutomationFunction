@@ -1,4 +1,4 @@
-name: CreateGitHubaccount
+name: CreateProject
 
 authors:
   - Humera Sultana
@@ -28,9 +28,6 @@ assertions:
   - "@Response.errors == false"
   - "@Response.data.name == @Request.name"
   - "@Response.data.openAPISpec ==@Request.openAPISpec"
-
-cleanup:
-  - Delete
 
 severity: Major
 
