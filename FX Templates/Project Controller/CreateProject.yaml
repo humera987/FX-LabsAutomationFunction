@@ -20,7 +20,7 @@ testCases:
       '{
         "name": "{{@Random | 3}}",
         "openAPISpec": "http;//13.56.210.25/v2/api-docs",
-        "UploadopenAPISpec": "None"
+        "isFileLoad": "null"
       }'
 
 assertions:
