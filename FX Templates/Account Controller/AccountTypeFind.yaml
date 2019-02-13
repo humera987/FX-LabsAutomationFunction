@@ -1,11 +1,11 @@
-name: FindAllAccountType
+name: AccountTypeFind
 
 authors:
   - Humera Sultana
 
 type: SUITE
 
-endpoint: /accounts/account-type/{PROJECT}
+endpoint: /accounts/account-type/PROJECT
 
 method: GET
 
