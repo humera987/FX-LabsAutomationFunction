@@ -21,21 +21,22 @@ testCases:
   - id: 1
     body:
       '{
-        "id" : "{{@CreateGitHubaccount_Response.data.id}}",
-        "org":{
-            "id": "{{@CreateGitHubaccount_Response.data.Org.id}}"
-          },
-        "name": "Git-{{@Random | 3}}",
-        "accountType": "GitHub",
-        "accessKey": "humera987",
-        "secretKey": "humera1234"
-      }'
+       "id": "{{@CreateGitHubaccount_Response.data.id}}",
+       "org": {
+       "id": "{{@CreateGitHubaccount_Response.data.org.id}}"
+       },
+       "name": "{{@Random | 3}}",
+       "accountType": "GitHub",
+       "accessKey": "humera987",
+       "secretKey": "humera1234"
+     }'
 
 assertions:
   - "@StatusCode == 200"
   - "@Response.errors == false"
+  - "@Response.data.name ==@Request.name"
   - "@Response.data.id ==@Request.id"
-  - "Response.data != EMPTY"
+  - "@Response.data.org.id ==@Request.org.id"
 
 cleanup:
   - DeleteAccount
