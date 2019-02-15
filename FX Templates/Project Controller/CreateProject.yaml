@@ -29,6 +29,9 @@ assertions:
   - "@Response.data.name == @Request.name"
   - "@Response.data.openAPISpec ==@Request.openAPISpec"
 
+cleanup:
+  - DeleteProject
+
 severity: Major
 
 category: Functional

@@ -22,6 +22,9 @@ testCases:
     body:
       '{
         "id" : "{{@CreateGitHubaccount_Response.data.id}}",
+        "org":{
+            "id": "{{@CreateGitHubaccount_Response.data.Org.id}}"
+          },
         "name": "Git-{{@Random | 3}}",
         "accountType": "GitHub",
         "accessKey": "humera987",
