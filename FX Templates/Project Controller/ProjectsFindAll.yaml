@@ -24,6 +24,3 @@ category: Functional
 
 tags:
   - V2
-
-policies:
-  logger: DEBUG
