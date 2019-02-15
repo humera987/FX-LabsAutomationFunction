@@ -1,4 +1,4 @@
-name: CreateProject
+name: ProjectUploadSpec
 
 authors:
   - Humera Sultana
@@ -8,9 +8,9 @@ type: SUITE
 init:
   - CreateProject
 
-endpoint: /projects
+endpoint: /projects/{{@CreateProject_Response.data.id}}/upload-spec
 
-method: PUT
+method: POST
 
 auth: Default
 
@@ -21,8 +21,8 @@ testCases:
   - id: 1
     body:
       '{
-        "id": "{{@CreateProject_Response.data.id}}"
-        "openAPISpec": "http;//54.215.136.217/v2/api-docs",
+        "id": "{{@CreateProject_Response.data.id}}",
+        "uploadSpec": "1",
         "isFileLoad": "null"
       }'
 

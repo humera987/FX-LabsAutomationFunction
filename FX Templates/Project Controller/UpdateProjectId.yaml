@@ -1,0 +1,48 @@
+name: UpdateProject
+
+authors:
+  - Humera Sultana
+
+type: SUITE
+
+init:
+  - CreateGitHubaccount
+  - CreateProject
+
+endpoint: /projects
+
+method: PUT
+
+auth: Default
+
+headers:
+  - 'Content-Type: application/json'
+
+testCases:
+  - id: 1
+    body:
+      '{
+        "id": "{{@CreateProject_Response.data.id}}",
+        "org": {
+          "id": "{{@CreateProject_Response.data.org.id}}"
+        },
+        "name": "proj-{{@Random | 6}}",
+        "url": "https://github.com/humera987/FXScript-Test-Functions.git",
+        "account": "{{@CreateGitHubaccount_Response.data}}"
+      }'
+
+assertions:
+  - "@StatusCode == 200"
+  - "@Response.errors == false"
+  - "@Response.data != EMPTY"
+
+cleanup:
+  - DeleteProject
+  - DeleteAccount
+
+severity: Major
+
+category: Functional
+
+tags:
+- V2
