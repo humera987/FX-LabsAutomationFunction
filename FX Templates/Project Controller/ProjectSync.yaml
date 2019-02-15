@@ -1,0 +1,43 @@
+name: ProjectSync
+
+authors:
+  - Humera Sultana
+
+type: SUITE
+
+init:
+ - CreateProject
+ - ProjectGetCodeConfigSave
+ - CreateProjectAutoCodeCategories
+
+endpoint: /projects/{{@CreateProject_Response.data.id}}/project-sync
+
+method: POST
+
+auth: Default
+
+headers:
+- 'Content-Type: application/json'
+
+testCases:
+  - id: 1
+    body: '{
+    "recreate": true,
+    "deleteAll": false,
+    "projectId": "{{@CreateProject_Response.data.id}}"
+}'
+
+assertions:
+  - "@StatusCode == 200"
+  - "@Response.errors == false"
+  - "@Response.data.project.id == @Request.project.id"
+
+cleanup:
+ - DeleteProject
+
+severity: Major
+
+category: Functional
+
+tags:
+- V2
