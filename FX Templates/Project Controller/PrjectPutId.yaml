@@ -1,0 +1,46 @@
+name: ProjectPutId
+
+authors:
+  - Humera Sultana
+
+type: SUITE
+
+init:
+  - CreateProject
+
+endpoint: /projects
+
+method: PUT
+
+auth: Default
+
+headers:
+  - 'Content-Type: application/json'
+
+testCases:
+  - id: 1
+    body:
+      '{
+        "id": "{{@CreateProject_Response.data.id}}"
+        "openAPISpec": "http;//54.215.136.217/v2/api-docs",
+        "isFileLoad": "null"
+      }'
+
+assertions:
+  - "@StatusCode == 200"
+  - "@Response.errors == false"
+  - "@Response.data.name == @Request.name"
+  - "@Response.data.openAPISpec ==@Request.openAPISpec"
+
+cleanup:
+  - DeleteProject
+
+severity: Major
+
+category: Functional
+
+tags:
+   - V2
+
+policies:
+  logger: DEBUG
