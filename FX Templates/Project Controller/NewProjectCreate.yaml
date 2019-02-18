@@ -24,7 +24,7 @@ testCases:
       "AdvanceSection":{
           "Email": "humera@fxlabs.io",
           "issuceTrackertype": "GitHUb",
-          "issueTrackerCredentials": "{{@CreateGitHubaccount_Responce.data.id}}",
+          "issueTrackerCredentials": "{{@CreateGitHubaccount_Response.data.id}}",
           "issueTracker": "https://github.com/humera987/FX-LabsAutomationFunction"
          }
        }'
@@ -32,7 +32,7 @@ testCases:
 assertions:
   - "@StatusCode == 200"
   - "@Response.errors == false"
-  - "@Response.data ! = Empty"
+  - "@Response.data != EMPTY"
 
 cleanup:
   - DeleteProject
