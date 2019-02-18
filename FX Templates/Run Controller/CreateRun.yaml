@@ -1,0 +1,51 @@
+name: CreateRun
+
+authors:
+  - Humera Sultana
+
+type: SUITE
+
+init:
+  - CreateGitHubaccount
+  - CreateProject
+  - ProjectGetCodeConfigSave
+  - project_create_GitHub_autoCode_simpleGet_abstract
+  - CreateEnvironment
+  - job_findby_projectid_abstract
+
+endpoint: /runs/job/{{@job_findby_projectid_abstract_Response.data[0].id}}
+
+method: POST
+
+auth: Default
+
+testCases:
+  - id: 1
+    body: '{
+        "jobId": "{{@job_findby_projectid_abstract_Response.data[0].id}}",
+        "regions": "FXLabs/Ali_Test"
+ }'
+
+assertions:
+  - "@StatusCode == 200"
+  - "@Response.errors == false"
+  - "@Response.data.environment.id == @Request.environment.id"
+  - "@Response.data.project.id == @Request.project.id"
+  - "@Response.data.job.id == @Request.jobId"
+
+cleanup:
+ - DeleteRun
+ - delete_job_findby_projectid_abstract
+ - DeleteEnvironment
+ - DeleteProject
+ - DeleteAccount
+
+severity: Major
+
+category: Functional
+
+tags:
+    - V2
+
+policies:
+    logger: DEBUG
