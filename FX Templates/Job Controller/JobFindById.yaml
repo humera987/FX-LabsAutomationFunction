@@ -1,14 +1,11 @@
-name: EnvironmentFindById
+name: JobsFindById
 
 authors:
   - Humera Sultana
 
 type: SUITE
 
-init:
-  - CreateEnvironment
-
-endpoint: /envs/{{@CreateEnvironment_Response.data.id}}?page=0&pageSize=20
+endpoint: /jobs/{{@CreateJob_Response.data.id}}?page=0&pageSize=20
 
 method: GET
 

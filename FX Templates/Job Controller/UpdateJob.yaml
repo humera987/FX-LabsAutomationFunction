@@ -1,0 +1,54 @@
+name: UpdateJob
+
+authors:
+  - Humera Sultana
+
+type: SUITE
+
+init:
+   - CreateProject
+   - CreateEnvironment
+   - CreateJob
+   - job_findby_projectid_abstract
+
+endpoint: /jobs
+
+method: PUT
+
+auth: Default
+
+testCases:
+    - id: 1
+      body: '{
+        "project": "{{@CreateProject_Response.data}}",
+        "environment": "{{@CreateEnvironment_Response.data}}",
+        "Job": "{{@CreateJob_Response.data}}",
+        "jobId": "{{@job_findby_projectid_abstract_Response.data.id}}",
+        "name": "UAT1",
+        "regions": "US_WEST",
+        "categories": ""
+      }'
+
+assertions:
+  - "@StatusCode == 200"
+  - "@Response.errors == false"
+  - "@Response.data.name == @Request.name"
+  - "@Response.data.job.id == @Request.job.id"
+  - "@Response.data.project.id == @Request.project.id"
+  - "@Response.data.environment.id == @Request.enviroment.id"
+
+cleanup:
+ - delete_job_findby_projectid_abstract
+ - DeleteProject
+ - DeleteEnvironment
+ - DeleteJob
+
+severity: Major
+
+category: Functional
+
+tags:
+  - V2
+
+policies:
+  logger: DEBUG
