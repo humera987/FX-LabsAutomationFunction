@@ -20,12 +20,12 @@ headers:
 testCases:
     - id: 1
       body:
-      '{
-      "project": "{{@CreateProject_Response.data}}",
-      "auths":[{"authType": "Basic","name": "Default",
-      "password": "humera123$","username": "Humera//humera@fxlabs.io"}],
-      "name": "UAT12","baseUrl": "http://13.56.210.25/api/v1"
-      }'
+       '{
+         "project": "{{@CreateProject_Response.data}}",
+         "auths": "[{authType": "Basic","name": "Default",
+         "password": "humera123$","username": "Humera//humera@fxlabs.io}]",
+         "name": "UAT12","baseUrl": "http://13.56.210.25/api/v1"
+       }'
 
 assertions:
   - "@StatusCode == 200"
