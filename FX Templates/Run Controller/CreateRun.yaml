@@ -9,8 +9,8 @@ init:
   - CreateGitHubaccount
   - CreateProject
   - ProjectGetCodeConfigSave
-  - project_create_GitHub_autoCode_simpleGet_abstract
   - CreateEnvironment
+  - project_create_GitHub_autoCode_simpleGet_abstract
   - job_findby_projectid_abstract
 
 endpoint: /runs/job/{{@job_findby_projectid_abstract_Response.data[0].id}}
