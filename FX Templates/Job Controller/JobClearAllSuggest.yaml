@@ -7,16 +7,6 @@ type: SUITE
 
 endpoint: /jobs/{{@CreateJob_Response.data.id}}/name: JobsFindById
 
-authors:
-  - Humera Sultana
-
-type: SUITE
-
-init:
-  - CreateProject
-
-endpoint: /jobs/{{@CreateJob_Response.data.id}}/clear-all-suggestions?page=0&pageSize=20
-
 method: GET
 
 auth: Default
