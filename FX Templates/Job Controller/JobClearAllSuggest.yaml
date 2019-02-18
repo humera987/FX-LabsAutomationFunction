@@ -5,7 +5,7 @@ authors:
 
 type: SUITE
 
-endpoint: /jobs/{{@CreateJob_Response.data.id}}/name: JobsFindById
+endpoint: /jobs/{{@CreateJob_Response.data.id}}/clear-all-suggestions
 
 method: GET
 
