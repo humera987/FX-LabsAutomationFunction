@@ -1,7 +1,6 @@
 name: DeleteAccount
 
 authors:
-  - Asiya Shaji
   - Humera Sultana
 
 type: ABSTRACT
@@ -25,3 +24,6 @@ category: Functional
 
 tags:
 - V2
+
+policies:
+  logger: DEBUG
