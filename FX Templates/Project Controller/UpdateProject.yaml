@@ -9,7 +9,7 @@ init:
   - CreateGitHubaccount
   - CreateProject
 
-endpoint: /projects
+endpoint: /projects/{{@CreateProject_Response.data.id}}
 
 method: PUT
 
