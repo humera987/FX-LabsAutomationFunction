@@ -32,6 +32,7 @@ assertions:
   - "@Response.errors == false"
   - "@Response.data.authType == @Request.authType"
   - "@Response.data.username == @Request.username"
+  - "@Response,data.password == @Request.password"
   - "@Response.data.name == @Request.name"
   - "@Response.data.url == @Request.url"
   - "@Response.data.projecct.id == @Request.project.id"
