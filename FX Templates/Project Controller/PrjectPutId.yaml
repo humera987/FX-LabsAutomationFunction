@@ -5,9 +5,6 @@ authors:
 
 type: SUITE
 
-init:
-  - CreateProject
-
 endpoint: /projects
 
 method: PUT
@@ -21,7 +18,7 @@ testCases:
   - id: 1
     body:
       '{
-        "id": "{{@CreateProject_Response.data.id}}"
+        "name": "{{@Random | 3}}",
         "openAPISpec": "http;//54.215.136.217/v2/api-docs",
         "isFileLoad": "null"
       }'
