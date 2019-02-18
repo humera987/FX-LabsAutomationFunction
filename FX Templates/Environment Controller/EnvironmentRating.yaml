@@ -8,7 +8,7 @@ type: SUITE
 init:
    - CreateEnvironment
 
-endpoint: /envs/{{@CreateEnvironment_Response.data.id}}/envrating
+endpoint: /envs/{{@CreateEnvironment_Response.data}}/envrating
 
 method: GET
 
