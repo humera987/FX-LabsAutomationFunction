@@ -1,0 +1,30 @@
+name: EnvironmentRating
+
+authors:
+  - Humera Sultana
+
+type: SUITE
+
+init:
+   - CreateEnvironment
+
+endpoint: /envs/{{@CreateEnvironment_Response.data.id}}/envrating
+
+method: GET
+
+auth: Default
+
+assertions:
+  - "@StatusCode == 200"
+  - "@Response.errors == false"
+  - "@Response.data != EMPTY"
+
+severity: Major
+
+category: Functional
+
+tags:
+    - V2
+
+policies:
+  logger: DEBUG
