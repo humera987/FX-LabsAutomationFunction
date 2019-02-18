@@ -5,9 +5,6 @@ authors:
 
 type: SUITE
 
-init:
-  - CreateEnvironment
-
 endpoint: /envs/{{@CreateEnvironment_Response.data.id}}?page=0&pageSize=20
 
 method: GET
