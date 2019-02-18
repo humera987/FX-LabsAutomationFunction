@@ -1,0 +1,49 @@
+name: CreateEnvironment
+
+authors:
+  - Humera Sultana
+
+type: SUITE
+
+init:
+  - CreateProject
+
+endpoint: /envs
+
+method: POST
+
+auth: Default
+
+headers:
+ - 'Content-Type: application/json'
+
+testCases:
+    - id: 1
+      body:
+      '{
+      "project": "{{@CreateProject_Response.data}}",
+      "auths":[{"authType": "Basic","name": "Default",
+      "password": "humera123$","username": "Humera//humera@fxlabs.io"}],
+      "name": "UAT12","baseUrl": "http://13.56.210.25/api/v1"
+      }'
+
+assertions:
+  - "@StatusCode == 200"
+  - "@Response.errors == false"
+  - "@Response.data.authType == @Request.authType"
+  - "@Response.data.username == @Request.username"
+  - "@Response.data.name == @Request.name"
+  - "@Response.data.url == @Request.url"
+  - "@Response.data.projecct.id == @Request.project.id"
+
+cleanup:
+  - job_findby_projectid_abstract
+  - delete_job_findby_projectid_abstract
+  - DeleteProject
+
+severity: Major
+
+category: Functional
+
+tags:
+- V2
