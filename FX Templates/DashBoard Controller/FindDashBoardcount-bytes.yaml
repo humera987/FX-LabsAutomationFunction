@@ -5,14 +5,11 @@ authors:
 
 type: SUITE
 
-endpoints: /dashboard/count-bytes
+endpoint: /dashboard/count-bytes
 
 method: GET
 
 auth: Default
-
-headers:
-  - 'Content-Type: application/json'
 
 assertions:
   - "@StatusCode == 200"
