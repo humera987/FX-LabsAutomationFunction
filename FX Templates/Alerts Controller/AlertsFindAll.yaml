@@ -11,9 +11,6 @@ method: GET
 
 auth: Default
 
-headers:
-  - 'Content-Type: application/json'
-
 assertions:
   - "@StatusCode == 200"
   - "@Response.errors == false"

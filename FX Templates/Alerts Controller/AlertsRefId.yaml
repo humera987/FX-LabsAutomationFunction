@@ -5,14 +5,11 @@ authors:
 
 type: SUITE
 
-endpoints: /alerts/ref/{{@CreateProject_Response.data.id}}
+endpoint: /alerts/ref/{{@CreateProject_Response.data.id}}
 
 method: GET
 
 auth: Default
-
-headers:
-  - 'Content-Type: application/json'
 
 assertions:
   - "@StatusCode == 200"
