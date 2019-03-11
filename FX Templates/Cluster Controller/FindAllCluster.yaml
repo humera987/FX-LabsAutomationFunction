@@ -1,11 +1,11 @@
-name: JobFindAll
+name: FindAllClusters
 
 authors:
   - Humera Sultana
 
 type: SUITE
 
-endpoint: /Jobs
+endpoint: /bot-clusters
 
 method: GET
 
