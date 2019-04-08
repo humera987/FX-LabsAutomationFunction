@@ -1,0 +1,53 @@
+name: UpdateCluster
+
+authors:
+  - Humera Sultana
+
+type: SUITE
+
+init:
+  - CreateAWSaccount
+  - CreateCluster
+
+endpoint: /bot-clusters/{{@CreateCluster_Response.data.id}}
+
+method: PUT
+
+auth: Default
+
+testCases:
+    - id: 1
+      body:
+        '{
+          "id": "{{@CreateCluster_Response.data.id}}",
+          "account": "{{@CreateAWSaccount_Response.data}}",
+          "org": {
+            "id": "{{@CreateAWSaccount_Response.data.org.id}}"
+          },
+          "cloudType": "AWS",
+          "manual": "false",
+          "name": "{{@Random | 6}}",
+          "region": "us-east-2",
+          "min": "1"
+        }'
+
+
+assertions:
+  - "@StatusCode == 200"
+  - "@Response.errors == false"
+  - "@Response.data.name == @Request.name"
+  - "@Response.data.cloudType == @Request.cloudType"
+
+cleanup:
+ - DeleteAccount
+ - DeleteCluster
+
+severity: Major
+
+category: Functional
+
+tags:
+  - V2
+
+policies:
+  logger: DEBUG
