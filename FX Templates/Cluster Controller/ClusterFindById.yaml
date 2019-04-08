@@ -1,0 +1,26 @@
+name: ClusterFindById
+
+authors:
+  - Humera Sultana
+
+type: SUITE
+
+endpoint: /bot-clusters/{{@CreateCluster_Response.data.id}}?page=0&pageSize=20
+
+method: GET
+
+auth: Default
+
+assertions:
+  - "@StatusCode == 200"
+  - "@Response.errors == false"
+
+severity: Major
+
+category: Functional
+
+tags:
+   - V2
+
+policies:
+  logger: DEBUG
