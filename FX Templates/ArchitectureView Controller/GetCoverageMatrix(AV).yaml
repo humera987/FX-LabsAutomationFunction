@@ -1,0 +1,26 @@
+name: GetCoverageMatrix(AV)
+
+authors:
+  - Humera Sultana
+
+type: SUITE
+
+endpoints: /architecture-view/project/{{@CreateProject_Response.data.id}}/coverage
+
+method: GET
+
+auth: Default
+
+assertions:
+  - "@StatusCode == 200"
+  - "@Response.errors == false"
+
+severity: Major
+
+category: Functional
+
+tags:
+  - V2
+
+policies:
+  logger: DEBUG
